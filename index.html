@@ -279,6 +279,7 @@ footer .legal{margin-top:1rem;font-size:.8rem}
         }
       });
       var cta = document.getElementById("cta-primary");
+      if(mobile && cta){cta.textContent = "See downloads \u2193"; cta.href = "#download";}
       var row = document.querySelector(".dl-row.rec .btn-dl");
       if(cta && row) cta.href = row.href;
       if(cta && os) cta.textContent = "Download for " + os.charAt(0).toUpperCase() + os.slice(1);
