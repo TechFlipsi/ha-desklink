@@ -2,108 +2,233 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>HA DeskLink — Home Assistant Desktop Companion for Windows, Linux & macOS</title>
 <meta name="description" content="HA DeskLink puts Home Assistant on your desktop: live sensor data, system status and entity controls as native app for Windows, Linux and macOS. No browser needed. Free & open source.">
-<meta name="keywords" content="home assistant desktop app, home assistant windows, home assistant linux, home assistant companion, home assistant tray, home assistant native app, HA DeskLink, TechFlipsi">
 <link rel="canonical" href="https://techflipsi.github.io/ha-desklink/">
 <meta property="og:title" content="HA DeskLink — Home Assistant on your Desktop">
 <meta property="og:description" content="Native desktop companion for Home Assistant: live sensors, system status, entity controls. Windows, Linux & macOS. Free, open source, no browser needed.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://techflipsi.github.io/ha-desklink/">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#0b1220">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230ea5e9'/%3E%3Cpath d='M28 38h44M28 50h44M28 62h26' stroke='%230b1220' stroke-width='9' stroke-linecap='round'/%3E%3C/svg%3E">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"HA DeskLink","operatingSystem":"Windows, Linux, macOS","applicationCategory":"UtilitiesApplication","description":"Native desktop companion for Home Assistant: live sensor data, system status and entity controls on your desktop. Free and open source.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"license":"https://www.gnu.org/licenses/gpl-3.0","author":{"@type":"Person","name":"TechFlipsi","url":"https://github.com/TechFlipsi"}}
+</script>
 <style>
-:root{--bg:#0b1220;--card:#131c2e;--accent:#0ea5e9;--text:#e6edf7;--muted:#9fb0c9}
+:root{
+  --bg:#070d18; --bg2:#0b1424; --card:#101b2e; --line:#1d2c47;
+  --accent:#38bdf8; --accent2:#0ea5e9; --accent-dark:#04121f;
+  --text:#e8f0fb; --muted:#93a5c1; --ok:#34d399;
+}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
-.wrap{max-width:960px;margin:0 auto;padding:0 24px}
-header{padding:64px 0 40px;text-align:center}
-h1{font-size:2.4rem;margin-bottom:12px}
-h1 span{color:var(--accent)}
-.sub{color:var(--muted);font-size:1.15rem;max-width:640px;margin:0 auto 28px}
-.cta{display:inline-block;background:var(--accent);color:#04121f;font-weight:700;padding:12px 28px;border-radius:10px;text-decoration:none;font-size:1.05rem}
-.cta:hover{filter:brightness(1.1)}
-.cta.ghost{background:transparent;color:var(--accent);border:2px solid var(--accent);margin-left:10px}
-.platforms{color:var(--muted);margin-top:14px;font-size:.95rem}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:18px;padding:24px 0 48px}
-.card{background:var(--card);border:1px solid #223;border-radius:12px;padding:22px}
-.card h2{font-size:1.05rem;margin-bottom:8px;color:var(--accent)}
-.card p{color:var(--muted);font-size:.95rem}
-section{padding:36px 0}
-h2.sect{font-size:1.5rem;margin-bottom:18px}
-ul.feats{list-style:none}
-ul.feats li{padding:6px 0;color:var(--text)}
-ul.feats li::before{content:"✓ ";color:var(--accent);font-weight:700}
-table{width:100%;border-collapse:collapse;margin:12px 0}
-td,th{padding:10px 12px;border-bottom:1px solid #223;text-align:left}
-.btn{display:inline-block;background:var(--accent);color:#04121f;font-weight:700;padding:10px 22px;border-radius:8px;text-decoration:none}
-footer{padding:32px 0;text-align:center;color:var(--muted);font-size:.9rem}
+html{scroll-behavior:smooth}
+body{
+  font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',sans-serif;
+  background:var(--bg);color:var(--text);line-height:1.65;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+a{color:var(--accent)}
+.wrap{max-width:1000px;margin:0 auto;padding:0 20px}
+
+/* ── Hintergrund-Glow ── */
+.glow{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.glow::before,.glow::after{content:"";position:absolute;border-radius:50%;filter:blur(110px);opacity:.5}
+.glow::before{width:560px;height:560px;top:-220px;left:-140px;background:radial-gradient(circle,#0ea5e9 0%,transparent 70%)}
+.glow::after{width:480px;height:480px;bottom:-200px;right:-120px;background:radial-gradient(circle,#6366f1 0%,transparent 70%)}
+
+/* ── Hero ── */
+header{padding:72px 0 40px;text-align:center}
+.logo{width:84px;height:84px;border-radius:22px;margin:0 auto 22px;display:grid;place-items:center;
+  background:linear-gradient(135deg,#38bdf8,#0284c7);box-shadow:0 12px 40px rgba(56,189,248,.35)}
+.logo svg{width:46px;height:46px}
+h1{font-size:clamp(2.1rem,6vw,3.4rem);line-height:1.15;letter-spacing:-.02em;margin-bottom:14px}
+h1 .grad{background:linear-gradient(90deg,#7dd3fc,#38bdf8,#0ea5e9);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:var(--muted);font-size:clamp(1.02rem,2.5vw,1.25rem);max-width:660px;margin:0 auto 30px}
+.cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.cta{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#38bdf8,#0284c7);
+  color:#04121f;font-weight:700;padding:14px 26px;border-radius:12px;text-decoration:none;font-size:1.02rem;
+  box-shadow:0 8px 28px rgba(14,165,233,.35);transition:transform .15s,box-shadow .15s}
+.cta:hover{transform:translateY(-2px);box-shadow:0 12px 34px rgba(14,165,233,.5)}
+.cta.ghost{background:rgba(56,189,248,.08);color:var(--accent);border:1.5px solid rgba(56,189,248,.45);box-shadow:none}
+.cta.ghost:hover{background:rgba(56,189,248,.16)}
+.hint{color:var(--muted);font-size:.92rem;margin-top:16px}
+.badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+.badge{font-size:.8rem;color:var(--muted);border:1px solid var(--line);background:rgba(255,255,255,.03);
+  padding:5px 12px;border-radius:99px}
+
+/* ── Sektionen ── */
+section{padding:44px 0}
+.eyebrow{color:var(--accent);font-weight:700;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px}
+h2{font-size:clamp(1.45rem,4vw,2rem);margin-bottom:16px;letter-spacing:-.01em}
+.lead{color:var(--muted);max-width:720px}
+
+/* ── Feature-Grid ── */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin-top:26px}
+.card{background:linear-gradient(180deg,var(--card),var(--bg2));border:1px solid var(--line);
+  border-radius:16px;padding:22px;transition:transform .15s,border-color .15s}
+.card:hover{transform:translateY(-3px);border-color:rgba(56,189,248,.5)}
+.card .ico{font-size:1.6rem;margin-bottom:10px;display:block}
+.card h3{font-size:1.02rem;margin-bottom:6px}
+.card p{color:var(--muted);font-size:.92rem}
+
+/* ── Downloads ── */
+.dl-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:26px}
+.dl{background:linear-gradient(180deg,var(--card),var(--bg2));border:1px solid var(--line);border-radius:16px;padding:20px;
+  display:flex;flex-direction:column;gap:10px;position:relative;transition:transform .15s,border-color .15s}
+.dl:hover{transform:translateY(-3px);border-color:rgba(56,189,248,.5)}
+.dl.recommended{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent),0 10px 30px rgba(14,165,233,.25)}
+.dl .rec{position:absolute;top:-11px;left:14px;background:var(--accent);color:#04121f;font-size:.7rem;font-weight:800;
+  padding:3px 10px;border-radius:99px;letter-spacing:.05em}
+.dl .os{font-size:1.5rem}
+.dl h3{font-size:1.02rem}
+.dl .meta{color:var(--muted);font-size:.82rem;flex:1}
+.dl .btn{display:block;text-align:center;background:var(--accent2);color:#04121f;font-weight:700;
+  padding:10px 16px;border-radius:10px;text-decoration:none;font-size:.92rem}
+.dl .btn:hover{filter:brightness(1.12)}
+.dl-note{color:var(--muted);font-size:.88rem;margin-top:14px}
+
+/* ── Vergleich ── */
+.cmp{margin-top:26px;display:grid;gap:12px}
+.cmp .row{border:1px solid var(--line);background:var(--bg2);border-radius:14px;padding:16px 18px;display:flex;gap:14px;align-items:flex-start}
+.cmp .row .tag{flex-shrink:0;font-weight:700;color:var(--accent);min-width:120px;font-size:.95rem}
+.cmp .row p{color:var(--muted);font-size:.93rem}
+.cmp .row.hl{border-color:rgba(56,189,248,.5);background:linear-gradient(180deg,rgba(56,189,248,.08),var(--bg2))}
+
+/* ── Footer ── */
+footer{padding:36px 0 44px;text-align:center;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);margin-top:20px}
 footer a{color:var(--accent)}
+.eco{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:14px 0 18px}
+.eco a{font-size:.85rem;border:1px solid var(--line);background:var(--bg2);padding:7px 14px;border-radius:99px;text-decoration:none;color:var(--text)}
+.eco a:hover{border-color:var(--accent)}
+
+@media (max-width:640px){
+  header{padding:52px 0 30px}
+  .cta{width:100%;max-width:340px;justify-content:center}
+  .cta-row{flex-direction:column;align-items:center}
+  .grid,.dl-grid{grid-template-columns:1fr}
+  section{padding:32px 0}
+  .cmp .row{flex-direction:column;gap:6px}
+  .cmp .row .tag{min-width:0}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important}
+}
 </style>
 </head>
 <body>
-<header>
-  <h1>HA Desk<span>Link</span></h1>
-  <p class="sub">Home Assistant on your desktop — live sensor data, system status and entity controls as a native app. No browser, no detour.</p>
-  <p>
-    <a class="cta" href="https://github.com/TechFlipsi/ha-desklink-windows/releases/latest">⬇ Download for Windows</a>
-    <a class="cta ghost" href="https://github.com/TechFlipsi/ha-desklink-linux/releases/latest">⬇ Linux</a>
-    <a class="cta ghost" href="https://github.com/TechFlipsi/ha-desklink-mac/releases/latest">⬇ macOS</a>
-  </p>
-  <p class="platforms">Free & open source · GPL-3.0 · Windows 10/11 · Linux (x64/ARM64) · macOS (Intel/Apple Silicon)</p>
+<div class="glow" aria-hidden="true"></div>
+
+<header class="wrap">
+  <div class="logo" aria-hidden="true">
+    <svg viewBox="0 0 100 100" fill="none"><path d="M22 36h56M22 50h56M22 64h34" stroke="#04121f" stroke-width="10" stroke-linecap="round"/></svg>
+  </div>
+  <h1>Home Assistant,<br><span class="grad">right on your desktop.</span></h1>
+  <p class="sub">HA DeskLink shows your smart-home sensors live on your PC and pushes your computer's status back into Home Assistant. Native app, no browser, no cloud.</p>
+  <div class="cta-row">
+    <a class="cta" id="cta-primary" href="https://github.com/TechFlipsi/ha-desklink-windows/releases/latest">⬇ Download for Windows</a>
+    <a class="cta ghost" href="https://github.com/TechFlipsi/ha-desklink-linux/releases/latest">Linux</a>
+    <a class="cta ghost" href="https://github.com/TechFlipsi/ha-desklink-mac/releases/latest">macOS</a>
+  </div>
+  <p class="hint" id="os-hint">Free & open source · GPL-3.0</p>
+  <div class="badges">
+    <span class="badge">🪟 Windows 10/11</span>
+    <span class="badge">🐧 Linux x64 · ARM64</span>
+    <span class="badge">🍎 Intel · Apple Silicon</span>
+    <span class="badge">🔒 100% local</span>
+    <span class="badge">🆓 GPL-3.0</span>
+  </div>
 </header>
 
 <div class="wrap">
   <section>
-    <h2>What is HA DeskLink?</h2>
-    <p>HA DeskLink is a free, open-source <strong>desktop companion for Home Assistant</strong>. It connects directly to your Home Assistant instance and puts the information you care about right on your desktop — always visible, always one glance away.</p>
-    <p>While the official Home Assistant web dashboard is great for full control, HA DeskLink is built for the <em>always-on</em> view: a lightweight native app that lives in your taskbar or system tray.</p>
+    <p class="eyebrow">What it is</p>
+    <h2>Your smart home, one glance away</h2>
+    <p class="lead">The Home Assistant dashboard is great for full control — but for the things you check all day, opening a browser tab is detour. HA DeskLink flips it around: the information lives on your desktop, always visible, one keystroke away.</p>
+    <div class="grid">
+      <div class="card"><span class="ico">📊</span><h3>Live sensor data</h3><p>Temperatures, energy, motion — values from your instance right in the taskbar or as desktop widget.</p></div>
+      <div class="card"><span class="ico">💻</span><h3>PC sensors into Home Assistant</h3><p>CPU load, RAM, disk and uptime of your computer appear as entities in your instance.</p></div>
+      <div class="card"><span class="ico">🎛️</span><h3>Entity controls</h3><p>Toggle lights, switches and scenes straight from the tray menu without opening a browser.</p></div>
+      <div class="card"><span class="ico">🔔</span><h3>Toast notifications</h3><p>Get native desktop notifications when automations or events fire — with position and monitor choice.</p></div>
+      <div class="card"><span class="ico">🖥️</span><h3>Embedded dashboard</h3><p>Optional WebView view of your full dashboard, embedded natively in the app.</p></div>
+      <div class="card"><span class="ico">⚙️</span><h3>Zero maintenance</h3><p>Auto-update, autostart, dark & light theme, hotkeys. Set it up once, forget it's there.</p></div>
+    </div>
+  </section>
+
+  <section id="download">
+    <p class="eyebrow">Downloads</p>
+    <h2>Pick your platform</h2>
+    <div class="dl-grid">
+      <div class="dl" data-os="windows">
+        <span class="os">🪟</span><h3>Windows</h3>
+        <p class="meta">Windows 10 &amp; 11 · signed installer · auto-update</p>
+        <a class="btn" href="https://github.com/TechFlipsi/ha-desklink-windows/releases/latest">Download .exe</a>
+      </div>
+      <div class="dl" data-os="linux">
+        <span class="os">🐧</span><h3>Linux</h3>
+        <p class="meta">x64 &amp; ARM64 · systemd daemon · XDG autostart · tar.gz</p>
+        <a class="btn" href="https://github.com/TechFlipsi/ha-desklink-linux/releases/latest">Download .tar.gz</a>
+      </div>
+      <div class="dl" data-os="mac">
+        <span class="os">🍎</span><h3>macOS</h3>
+        <p class="meta">Intel &amp; Apple Silicon · v4.4.2 · community-maintained</p>
+        <a class="btn" href="https://github.com/TechFlipsi/ha-desklink-mac/releases/latest">Download .zip</a>
+      </div>
+    </div>
+    <p class="dl-note">Looking for a specific version or older release? All downloads live on the
+      <a href="https://github.com/TechFlipsi/ha-desklink-windows/releases">Windows</a>,
+      <a href="https://github.com/TechFlipsi/ha-desklink-linux/releases">Linux</a> and
+      <a href="https://github.com/TechFlipsi/ha-desklink-mac/releases">macOS</a> release pages.</p>
   </section>
 
   <section>
-    <h2>Features</h2>
-    <ul class="feats">
-      <li>Live sensor data from Home Assistant on your desktop</li>
-      <li>System status &amp; PC sensors pushed into Home Assistant</li>
-      <li>Control entities directly from your desktop</li>
-      <li>Toast notifications for HA events &amp; automations</li>
-      <li>WebView dashboard embedded — full Lovelace access</li>
-      <li>Dark &amp; light theme, hotkeys, autostart</li>
-      <li>Auto-update, no browser, fully local connection</li>
-    </ul>
+    <p class="eyebrow">How it compares</p>
+    <h2>Ways to get your smart home on the PC</h2>
+    <div class="cmp">
+      <div class="row"><span class="tag">Browser / PWA</span><p>Full dashboard, but it's still just a browser window competing with your other tabs.</p></div>
+      <div class="row"><span class="tag">HASS.Agent</span><p>Feature-rich Windows integration with sensors and commands — great, but Windows-only.</p></div>
+      <div class="row hl"><span class="tag">HA DeskLink</span><p>Lightweight companion for all three desktop systems: live desktop view, notifications, PC sensors and an embedded dashboard — without running a browser.</p></div>
+    </div>
   </section>
 
   <section>
-    <h2>Downloads</h2>
-    <table>
-      <tr><th>Platform</th><th>Download</th><th>Type</th></tr>
-      <tr><td>🪟 Windows 10/11</td><td><a class="btn" href="https://github.com/TechFlipsi/ha-desklink-windows/releases/download/v5.0.4/HA_DeskLink_Setup_5.0.4.exe">HA_DeskLink_Setup_5.0.4.exe</a></td><td>Installer</td></tr>
-      <tr><td>🐧 Linux x64</td><td><a class="btn" href="https://github.com/TechFlipsi/ha-desklink-linux/releases/download/v5.0.4/ha-desklink-linux-x64.tar.gz">ha-desklink-linux-x64.tar.gz</a></td><td>tar.gz</td></tr>
-      <tr><td>🐧 Linux ARM64</td><td><a class="btn" href="https://github.com/TechFlipsi/ha-desklink-linux/releases/download/v5.0.4/ha-desklink-linux-arm64.tar.gz">ha-desklink-linux-arm64.tar.gz</a></td></tr>
-      <tr><td>🍎 macOS ARM64 (Apple Silicon)</td><td><a class="btn" href="https://github.com/TechFlipsi/ha-desklink-mac/releases/download/v4.4.2/HA_DeskLink_macOS_ARM64_4.4.2.zip">HA_DeskLink_macOS_ARM64_4.4.2.zip</a></td></tr>
-      <tr><td>🍎 macOS Intel</td><td><a class="btn" href="https://github.com/TechFlipsi/ha-desklink-mac/releases/download/v4.4.2/HA_DeskLink_macOS_x64_4.4.2.zip">HA_DeskLink_macOS_x64_4.4.2.zip</a></td></tr>
-    </table>
-    <p style="color:var(--muted);font-size:.9rem">All releases: <a href="https://github.com/TechFlipsi/ha-desklink-windows/releases">Windows</a> · <a href="https://github.com/TechFlipsi/ha-desklink-linux/releases">Linux</a> · <a href="https://github.com/TechFlipsi/ha-desklink-mac/releases">macOS</a></p>
-  </section>
-
-  <section>
-    <h2>How it compares</h2>
-    <p>Looking for ways to get <strong>Home Assistant on your PC</strong>? Common options and where HA DeskLink fits:</p>
-    <ul class="feats">
-      <li><strong>Browser tab / PWA</strong> — full dashboard, but just a browser window</li>
-      <li><strong>HASS.Agent</strong> — powerful Windows integration with sensors &amp; commands</li>
-      <li><strong>HA DeskLink</strong> — lightweight companion: live desktop view, notifications, system sensors, WebView dashboard — for Windows, Linux <em>and</em> macOS</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Source &amp; Community</h2>
-    <p>Source code per platform: <a href="https://github.com/TechFlipsi/ha-desklink-windows">Windows</a> · <a href="https://github.com/TechFlipsi/ha-desklink-linux">Linux</a> · <a href="https://github.com/TechFlipsi/ha-desklink-mac">macOS</a> · Questions &amp; feedback: <a href="https://discord.gg/zHPhQ7EaqH">Discord</a></p>
+    <p class="eyebrow">Source & community</p>
+    <h2>Open source, open doors</h2>
+    <p class="lead">Source code lives per platform on GitHub — pull requests, issues and feature ideas are welcome.
+      Questions or feedback? Join the <a href="https://discord.gg/zHPhQ7EaqH">TechFlipsi Discord</a>.</p>
   </section>
 </div>
 
 <footer>
-  <p>HA DeskLink is part of the <a href="https://github.com/TechFlipsi">TechFlipsi ecosystem</a> — FlipsiColor (AI photo &amp; video color correction), FlipsiForge (3D printer management), HA DeskLink (Home Assistant desktop companion).<br>
-  Home Assistant is a registered trademark of the Home Assistant project. HA DeskLink is an independent community project.</p>
+  <div class="eco">
+    <a href="https://github.com/TechFlipsi/FlipsiColor">🎨 FlipsiColor</a>
+    <a href="https://github.com/TechFlipsi/FlipsiForge">🔧 FlipsiForge</a>
+    <a href="https://github.com/TechFlipsi">TechFlipsi on GitHub</a>
+  </div>
+  <p>HA DeskLink is an independent community project, free under GPL-3.0.<br>
+  Home Assistant is a trademark of the Home Assistant project; this project is not affiliated with it.</p>
 </footer>
+
+<script>
+(function(){
+  try{
+    var ua = navigator.userAgent.toLowerCase();
+    var os = "windows";
+    if (/mac|iphone|ipad/.test(ua)) os = "mac";
+    if (/linux|android/.test(ua) && !/mac/.test(ua)) os = "linux";
+    var cards = document.querySelectorAll(".dl");
+    cards.forEach(function(c){
+      if(c.dataset.os === os){
+        c.classList.add("recommended");
+        var h = c.querySelector("h3");
+        if(h) h.textContent += " (your system)";
+      }
+    });
+    var hint = document.getElementById("os-hint");
+    if(hint) hint.textContent = "Free & open source · GPL-3.0 · detected: " + os.toUpperCase() + " (highlighted below)";
+  }catch(e){}
+})();
+</script>
 </body>
 </html>
