@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>HA DeskLink — Home Assistant desktop companion for Windows, Linux & macOS</title>
-<meta name="description" content="HA DeskLink puts Home Assistant on your desktop: live sensor data, system status and entity controls as a native app for Windows, Linux and macOS. No browser, no cloud, free and open source.">
+<meta name="description" content="HA DeskLink puts Home Assistant on your desktop: live sensor data, desktop widgets, system status, entity controls and built-in Music Assistant support. Native app for Windows, Linux and macOS. No browser, no cloud, free and open source.">
 <link rel="canonical" href="https://techflipsi.github.io/ha-desklink/">
 <meta property="og:title" content="HA DeskLink — Home Assistant on your desktop">
-<meta property="og:description" content="Live sensors on your desktop, your PC's status in Home Assistant. Native app for Windows, Linux and macOS. Free, open source, fully local.">
+<meta property="og:description" content="Live sensors and desktop widgets, your PC's status in Home Assistant, Music Assistant built in. Native app for Windows, Linux and macOS. Free, open source, fully local.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://techflipsi.github.io/ha-desklink/">
 <meta name="theme-color" content="#0d1218">
@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"SoftwareApplication","name":"HA DeskLink","operatingSystem":"Windows, Linux, macOS","applicationCategory":"UtilitiesApplication","description":"Native desktop companion for Home Assistant: live sensor data, system status and entity controls on your desktop. Free and open source.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"license":"https://www.gnu.org/licenses/gpl-3.0","author":{"@type":"Person","name":"TechFlipsi","url":"https://github.com/TechFlipsi"}}
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"HA DeskLink","operatingSystem":"Windows, Linux, macOS","applicationCategory":"UtilitiesApplication","description":"Native desktop companion for Home Assistant: live sensor data, desktop widgets, system status, entity controls and built-in Music Assistant support. Free and open source.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"license":"https://www.gnu.org/licenses/gpl-3.0","author":{"@type":"Person","name":"TechFlipsi","url":"https://github.com/TechFlipsi"}}
 </script>
 <style>
 :root{
@@ -191,12 +191,12 @@ footer .legal{margin-top:1rem;font-size:.8rem}
   <header class="hero">
     <div>
       <h1>Home Assistant on your desktop.</h1>
-      <p class="sub">Your sensors live in the corner of your screen; your computer's status lives in Home Assistant. A native companion app for Windows, Linux and macOS — no browser, no cloud.</p>
+      <p class="sub">Your sensors live in the corner of your screen and on desktop widgets; your computer's status lives in Home Assistant; your Music Assistant library is always one search away. A native companion app for Windows, Linux and macOS — no browser, no cloud.</p>
       <div class="cta-row">
         <a class="btn-primary" id="cta-primary" href="https://github.com/TechFlipsi/ha-desklink-windows/releases/latest">Download for Windows</a>
         <a class="btn-quiet" href="#download">Other platforms ↓</a>
       </div>
-      <p class="trust">Free &amp; open source (GPL-3.0) · connects only to your own instance</p>
+      <p class="trust">Free &amp; open source (GPL-3.0) · connects only to your own instances</p>
     </div>
     <div class="tray" aria-hidden="true">
       <div class="bar"><i></i><i></i><i></i><span class="clock">14:32</span></div>
@@ -214,11 +214,14 @@ footer .legal{margin-top:1rem;font-size:.8rem}
   <section>
     <p class="eyebrow">What it does</p>
     <h2>Two directions, one small app</h2>
-    <p class="lead">Most setups keep Home Assistant in a browser tab. HA DeskLink moves the handful of things you actually check all day onto the desktop — and feeds your computer's own status back into your automations.</p>
+    <p class="lead">Most setups keep Home Assistant in a browser tab. HA DeskLink moves the handful of things you actually check all day onto the desktop — and feeds your computer's own status back into your automations. Your music comes along too: Music Assistant is built in, and it can stream straight to this PC.</p>
     <div class="feats">
       <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M21 7v6h-6"/></svg><div><h3>Live sensors on the desktop</h3><p>Temperatures, energy, locks, motion — values from your instance, visible at a glance in the tray.</p></div></div>
       <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6M9 13h6M9 17h3"/></svg><div><h3>Your PC becomes an entity</h3><p>CPU load, memory, disk and uptime are pushed into Home Assistant as regular sensors.</p></div></div>
       <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v18M5 8l7-5 7 5v8l-7 5-7-8z" stroke-linejoin="round"/></svg><div><h3>Controls from the tray</h3><p>Toggle lights, switches and scenes from the tray menu without opening a browser window.</p></div></div>
+      <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><div><h3>Widgets on the desktop</h3><p>Sensor values and switch cards sit right on the desktop, behind all open windows — with a set for every monitor.</p></div></div>
+      <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg><div><h3>Music Assistant, built in</h3><p>Search your library, manage the queue and control any player in your home, right from the app.</p></div></div>
+      <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg><div><h3>This PC becomes a player</h3><p>Sendspin streams Music Assistant audio to this computer — it plays on your PC speakers or headphones.</p></div></div>
       <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg><div><h3>Notifications that arrive</h3><p>Automations and events surface as native desktop notifications, with your choice of position and monitor.</p></div></div>
       <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg><div><h3>Full dashboard when you want it</h3><p>An optional embedded WebView gives you the complete Lovelace UI inside the app.</p></div></div>
       <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22a10 10 0 100-20 10 10 0 000 20z"/><path d="M12 6v6l4 2"/></svg><div><h3>Set it up once</h3><p>Auto-update, autostart, dark and light theme, hotkeys. Then forget it's there.</p></div></div>
@@ -251,19 +254,20 @@ footer .legal{margin-top:1rem;font-size:.8rem}
   <section>
     <p class="eyebrow">In short</p>
     <h2>What is HA DeskLink?</h2>
-    <p class="lead">HA DeskLink is a <strong>free, open-source desktop application</strong> (GPL-3.0) for <strong>Windows 10/11, Linux and macOS</strong> that connects a computer to a Home Assistant smart-home instance in both directions: it displays Home Assistant sensor values (temperatures, energy, lock states, motion) live on the desktop in the taskbar or system tray, and it feeds the computer's own status (CPU load, memory, disk space, uptime) back into Home Assistant as regular sensor entities. Users can toggle lights, switches and scenes directly from the tray menu, receive native desktop notifications when Home Assistant automations fire, and optionally open their full dashboard in an embedded WebView. The app is not a browser extension and not a cloud service: it connects only to the user's own Home Assistant instance over the local network, needs no subscription, and sends no data anywhere else.</p>
+    <p class="lead">HA DeskLink is a <strong>free, open-source desktop application</strong> (GPL-3.0) for <strong>Windows 10/11, Linux and macOS</strong> that connects a computer to a Home Assistant smart-home instance in both directions: it displays Home Assistant sensor values (temperatures, energy, lock states, motion) live on the desktop in the taskbar or system tray, and it feeds the computer's own status (CPU load, memory, disk space, uptime) back into Home Assistant as regular sensor entities. Users can toggle lights, switches and scenes directly from the tray menu, pin sensor values and switch cards to the desktop as widgets behind all open windows (with a set per monitor), receive native desktop notifications when Home Assistant automations fire, and optionally open their full dashboard in an embedded WebView. Music Assistant support is built in: users can search their music library, manage the queue and control any player from the app, and with Sendspin streaming the computer itself appears as a Music Assistant player, playing audio through its own speakers or headphones. The app is not a browser extension and not a cloud service: it connects only to the user's own Home Assistant and Music Assistant instances over the local network, needs no subscription, and sends no data anywhere else.</p>
   </section>
 
   <section>
     <p class="eyebrow">FAQ</p>
     <h2>Common questions</h2>
     <div class="cmp">
-      <p><strong>Do I still need a browser?</strong> No. The tray view, sensors, notifications and entity controls all work without opening a browser. The embedded WebView dashboard is optional.</p>
-      <p><strong>Does my data leave my computer?</strong> No. The app connects only to your own Home Assistant instance. No cloud service, no telemetry, no account anywhere except your own instance.</p>
+      <p><strong>Do I still need a browser?</strong> No. The tray view, desktop widgets, sensors, notifications, entity controls and Music Assistant all work without opening a browser. The embedded WebView dashboard is optional.</p>
+      <p><strong>Does it work with Music Assistant?</strong> Yes — natively. Search your library, manage the queue and control players from the app. With Sendspin, your computer itself appears as a Music Assistant player and plays through its own speakers or headphones.</p>
+      <p><strong>Does my data leave my computer?</strong> No. The app connects only to your own Home Assistant and Music Assistant instances. No cloud service, no telemetry, no account anywhere else.</p>
       <p><strong>What do I need to run it?</strong> Windows 10 or 11, Linux (x64 or ARM64), or macOS (Intel or Apple Silicon), plus a Home Assistant instance and a long-lived access token for the connection.</p>
       <p><strong>How much does it cost?</strong> Nothing. It is free software under GPL-3.0, and the source code is public on GitHub.</p>
       <p><strong>Is it an alternative to the official companion apps?</strong> It complements them: the mobile companion apps cover phones, HA DeskLink covers desktop PCs.</p>
-      <p><strong>How does setup compare to HASS.Agent?</strong> Shorter. HASS.Agent needs an MQTT broker and a custom HACS integration beside the Windows app; HA DeskLink only needs your Home Assistant URL and an access token. HASS.Agent is the more powerful toolbox (commands, satellite service, media player); HA DeskLink focuses on a quick live view with minimal setup.</p>
+      <p><strong>How does setup compare to HASS.Agent?</strong> Shorter. HASS.Agent needs an MQTT broker and a custom HACS integration beside the Windows app; HA DeskLink only needs your Home Assistant URL and an access token. HASS.Agent is the more powerful toolbox (commands, satellite service, generic media player); HA DeskLink focuses on a quick live view with minimal setup — with desktop widgets, Music Assistant and Sendspin streaming built in.</p>
     </div>
   </section>
 
@@ -273,7 +277,7 @@ footer .legal{margin-top:1rem;font-size:.8rem}
     <div class="cmp">
       <p><strong>Browser tab or PWA.</strong> The full dashboard, but it competes with every other tab you have open.</p>
       <p><strong>HASS.Agent (v2.2.1).</strong> The most feature-rich Windows client: sensors, commands, quick actions, media player — plus an MQTT broker and a separate Home Assistant integration as prerequisites, which makes the initial setup noticeably more involved. Actively maintained (1.3k★), Windows-only.</p>
-      <p><strong>HA DeskLink.</strong> The lighter path for all three desktop systems: no MQTT broker, no separate integration — install, enter your Home Assistant URL and token, done. Live desktop view, notifications, PC sensors and an embedded dashboard. Fewer power-user features than HASS.Agent, far less setup.</p>
+      <p><strong>HA DeskLink.</strong> The lighter path for all three desktop systems: no MQTT broker, no separate integration — install, enter your Home Assistant URL and token, done. Live desktop view, widgets, notifications, PC sensors, built-in Music Assistant and an embedded dashboard. Fewer power-user features than HASS.Agent, far less setup.</p>
     </div>
   </section>
 
@@ -308,7 +312,6 @@ footer .legal{margin-top:1rem;font-size:.8rem}
     <p>HA DeskLink is an independent open-source project under GPL-3.0.<br>Home Assistant is a trademark of the Home Assistant project; this project is not affiliated with it.</p>
     <p class="legal"><a href="/ha-desklink/impressum.html">Imprint</a> · <a href="/ha-desklink/datenschutz.html">Privacy</a></p>
   </footer>
-  </main>
 </div>
 
 <script>
