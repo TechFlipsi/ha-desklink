@@ -263,6 +263,7 @@ footer .legal{margin-top:1rem;font-size:.8rem}
       <p><strong>What do I need to run it?</strong> Windows 10 or 11, Linux (x64 or ARM64), or macOS (Intel or Apple Silicon), plus a Home Assistant instance and a long-lived access token for the connection.</p>
       <p><strong>How much does it cost?</strong> Nothing. It is free software under GPL-3.0, and the source code is public on GitHub.</p>
       <p><strong>Is it an alternative to the official companion apps?</strong> It complements them: the mobile companion apps cover phones, HA DeskLink covers desktop PCs.</p>
+      <p><strong>How does setup compare to HASS.Agent?</strong> Shorter. HASS.Agent needs an MQTT broker and a custom HACS integration beside the Windows app; HA DeskLink only needs your Home Assistant URL and an access token. HASS.Agent is the more powerful toolbox (commands, satellite service, media player); HA DeskLink focuses on a quick live view with minimal setup.</p>
     </div>
   </section>
 
@@ -271,8 +272,8 @@ footer .legal{margin-top:1rem;font-size:.8rem}
     <h2>Where it fits</h2>
     <div class="cmp">
       <p><strong>Browser tab or PWA.</strong> The full dashboard, but it competes with every other tab you have open.</p>
-      <p><strong>HASS.Agent.</strong> A capable Windows-only integration with sensors and commands.</p>
-      <p class="hl"><strong>HA DeskLink.</strong> A lightweight companion for Windows, Linux and macOS: live desktop view, notifications, PC sensors and an embedded dashboard — without running a browser.</p>
+      <p><strong>HASS.Agent (v2.2.1).</strong> The most feature-rich Windows client: sensors, commands, quick actions, media player — plus an MQTT broker and a separate Home Assistant integration as prerequisites, which makes the initial setup noticeably more involved. Actively maintained (1.3k★), Windows-only.</p>
+      <p><strong>HA DeskLink.</strong> The lighter path for all three desktop systems: no MQTT broker, no separate integration — install, enter your Home Assistant URL and token, done. Live desktop view, notifications, PC sensors and an embedded dashboard. Fewer power-user features than HASS.Agent, far less setup.</p>
     </div>
   </section>
 
