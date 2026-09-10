@@ -144,6 +144,16 @@ h2{font-size:clamp(1.4rem,3.5vw,1.9rem);margin-bottom:1rem}
 .cmp .hl{border-left:3px solid var(--accent-500);padding:.75rem 0 .75rem 1rem;color:var(--text);background:var(--accent-dark,var(--accent-500) transparent)}
 .cmp .hl strong{color:var(--accent-400)}
 
+
+/* ── Mobile tuning ── */
+@media (max-width:47.99rem){
+  h1{font-size:clamp(1.7rem,7.5vw,2.1rem)}
+  .hero{padding:2.75rem 0 2.5rem;gap:2rem}
+  .hero .sub{font-size:1rem;margin-bottom:1.4rem}
+  nav .nav-link{font-size:.95rem;padding:.5rem .6rem}
+  .tray{max-width:17rem;margin-top:.25rem}
+  .hero h1{max-width:none}
+}
 /* Footer */
 footer{border-top:1px solid var(--line);padding:2.5rem 0 3rem;font-size:.85rem;color:var(--muted)}
 .eco{display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:1.25rem}
