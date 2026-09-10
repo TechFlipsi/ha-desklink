@@ -136,6 +136,9 @@ h2{font-size:clamp(1.4rem,3.5vw,1.9rem);margin-bottom:1rem}
 .dl-row.rec .btn-dl:hover{background:var(--accent-600)}
 .dl-row .tag{display:inline-block;font-size:.68rem;font-weight:600;letter-spacing:.06em;color:var(--accent-400);margin-left:.5rem}
 .dl-foot{margin-top:1rem;font-size:.85rem;color:var(--muted)}
+.st{font-size:.78rem;font-weight:500}
+.st-ok{color:#4ade80}
+.st-warn{color:#fbbf24}
 
 /* Compare: plain text rows */
 .cmp{margin-top:2rem;display:grid;gap:1rem;max-width:42rem}
@@ -220,17 +223,17 @@ footer .legal{margin-top:1rem;font-size:.8rem}
     <div class="dl-rows">
       <div class="dl-row" data-os="windows">
         <span class="os">Windows<small>10 &amp; 11</small></span>
-        <span class="meta">Installer with auto-update, taskbar and tray mode</span>
+        <span class="meta">Installer with auto-update, taskbar and tray mode<br><span class="st st-ok">● Actively maintained</span></span>
         <a class="btn-dl" href="https://github.com/TechFlipsi/ha-desklink-windows/releases/latest">Download</a>
       </div>
       <div class="dl-row" data-os="linux">
         <span class="os">Linux<small>x64 · ARM64</small></span>
-        <span class="meta">tar.gz, systemd daemon, XDG autostart</span>
+        <span class="meta">tar.gz, systemd daemon, XDG autostart<br><span class="st st-warn">● Actively developed — few real-world testers yet, bugs are likely. Please report what you find.</span></span>
         <a class="btn-dl" href="https://github.com/TechFlipsi/ha-desklink-linux/releases/latest">Download</a>
       </div>
       <div class="dl-row" data-os="mac">
         <span class="os">macOS<small>Intel · Apple Silicon</small></span>
-        <span class="meta">Community-maintained, currently resting at v4.4.2</span>
+        <span class="meta">Development paused at v4.4.2 — no Mac hardware to test on and too few macOS users so far. Development resumes as soon as more users and testers join.</span>
         <a class="btn-dl" href="https://github.com/TechFlipsi/ha-desklink-mac/releases/latest">Download</a>
       </div>
     </div>
@@ -247,7 +250,22 @@ footer .legal{margin-top:1rem;font-size:.8rem}
     </div>
   </section>
 
-  <section>
+  <section id="tester">
+    <p class="eyebrow">Get involved</p>
+    <h2>Testers shape the roadmap</h2>
+    <p class="lead">HA DeskLink improves fastest with feedback from real machines. Two platforms especially need eyes on them right now:</p>
+    <div class="cmp">
+      <p><strong>Linux.</strong> Actively developed, but barely tested outside my own machines — edge cases are almost guaranteed to exist. If you run it, tell me what breaks.</p>
+      <p><strong>macOS.</strong> Development is paused simply because there is no Mac to test on and too few users yet. If enough people show interest and help test, development picks up again — that decision is directly in your hands.</p>
+    </div>
+    <p class="lead" style="margin-top:1.25rem">Every bug report, edge case or "works on my setup" helps. Testers and feedback are explicitly welcome — whether you find a crash, a visual glitch, or just want to suggest a feature.</p>
+    <div class="cta-row" style="margin-top:1.5rem">
+      <a class="btn-primary" href="mailto:techflipsi@kirchweger.de?subject=HA%20DeskLink%20feedback">Write me an E-mail</a>
+      <a class="btn-quiet" href="https://discord.gg/zHPhQ7EaqH">or join the Discord</a>
+    </div>
+  </section>
+
+<section>
     <p class="eyebrow">Open source</p>
     <h2>Source code &amp; feedback</h2>
     <p class="lead">The code lives per platform on GitHub. Issues, pull requests and feature ideas are welcome — or join the <a href="https://discord.gg/zHPhQ7EaqH">TechFlipsi Discord</a>.</p>
