@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HA DeskLink — Home Assistant Desktop Companion for Windows, Linux & macOS</title>
+<meta name="description" content="HA DeskLink puts Home Assistant on your desktop: live sensor data, system status and entity controls as native app for Windows, Linux and macOS. No browser needed. Free & open source.">
+<meta name="keywords" content="home assistant desktop app, home assistant windows, home assistant linux, home assistant companion, home assistant tray, home assistant native app, HA DeskLink, TechFlipsi">
+<link rel="canonical" href="https://techflipsi.github.io/ha-desklink/">
+<meta property="og:title" content="HA DeskLink — Home Assistant on your Desktop">
+<meta property="og:description" content="Native desktop companion for Home Assistant: live sensors, system status, entity controls. Windows, Linux & macOS. Free, open source, no browser needed.">
+<meta property="og:type" content="content=website">
+<meta property="og:url" content="https://techflipsi.github.io/ha-desklink/">
+<style>
+:root{--bg:#0b1220;--card:#131c2e;--accent:#0ea5e9;--text:#e6edf7;--muted:#9fb0c9}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+.wrap{max-width:960px;margin:0 auto;padding:0 24px}
+header{padding:64px 0 40px;text-align:center}
+h1{font-size:2.4rem;margin-bottom:12px}
+h1 span{color:var(--accent)}
+.sub{color:var(--muted);font-size:1.15rem;max-width:640px;margin:0 auto 28px}
+.cta{display:inline-block;background:var(--accent);color:#04121f;font-weight:700;padding:12px 28px;border-radius:10px;text-decoration:none;font-size:1.05rem}
+.cta:hover{filter:brightness(1.1)}
+.cta.ghost{background:transparent;color:var(--accent);border:2px solid var(--accent);margin-left:10px}
+.platforms{color:var(--muted);margin-top:14px;font-size:.95rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:18px;padding:24px 0 48px}
+.card{background:var(--card);border:1px solid #223;border-radius:12px;padding:22px}
+.card h2{font-size:1.05rem;margin-bottom:8px;color:var(--accent)}
+.card p{color:var(--muted);font-size:.95rem}
+section{padding:36px 0}
+h2.sect{font-size:1.5rem;margin-bottom:18px}
+ul.feats{list-style:none}
+ul.feats li{padding:6px 0;color:var(--text)}
+ul.feats li::before{content:"✓ ";color:var(--accent);font-weight:700}
+table{width:100%;border-collapse:collapse;margin:12px 0}
+td,th{padding:10px 12px;border-bottom:1px solid #223;text-align:left}
+.btn{display:inline-block;background:var(--accent);color:#04121f;font-weight:700;padding:10px 22px;border-radius:8px;text-decoration:none}
+footer{padding:32px 0;text-align:center;color:var(--muted);font-size:.9rem}
+footer a{color:var(--accent)}
+</style>
+</head>
+<body>
+<header>
+  <h1>HA Desk<span>Link</span></h1>
+  <p class="sub">Home Assistant on your desktop — live sensor data, system status and entity controls as a native app. No browser, no detour.</p>
+  <p>
+    <a class="cta" href="https://github.com/TechFlipsi/ha-desklink-windows/releases/latest">⬇ Download for Windows</a>
+    <a class="cta ghost" href="https://github.com/TechFlipsi/ha-desklink-linux/releases/latest">⬇ Linux</a>
+    <a class="cta ghost" href="https://github.com/TechFlipsi/ha-desklink-mac/releases/latest">⬇ macOS</a>
+  </p>
+  <p class="platforms">Free & open source · GPL-3.0 · Windows 10/11 · Linux (x64/ARM64) · macOS (Intel/Apple Silicon)</p>
+</header>
+
+<div class="wrap">
+  <section>
+    <h2>What is HA DeskLink?</h2>
+    <p>HA DeskLink is a free, open-source <strong>desktop companion for Home Assistant</strong>. It connects directly to your Home Assistant instance and puts the information you care about right on your desktop — always visible, always one glance away.</p>
+    <p>While the official Home Assistant web dashboard is great for full control, HA DeskLink is built for the <em>always-on</em> view: a lightweight native app that lives in your taskbar or system tray.</p>
+  </section>
+
+  <section>
+    <h2>Features</h2>
+    <ul class="feats">
+      <li>Live sensor data from Home Assistant on your desktop</li>
+      <li>System status &amp; PC sensors pushed into Home Assistant</li>
+      <li>Control entities directly from your desktop</li>
+      <li>Toast notifications for HA events &amp; automations</li>
+      <li>WebView dashboard embedded — full Lovelace access</li>
+      <li>Dark &amp; light theme, hotkeys, autostart</li>
+      <li>Auto-update, no browser, fully local connection</li>
+    </list>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Downloads</h2>
+    <table>
+      <tr><th>Platform</th><th>Download</th><th>Type</th></tr>
+      <tr><td>🪟 Windows 10/11</td><td><a class="btn" href="https://github.com/TechFlipsi/ha-desklink-windows/releases/download/v5.0.4/HA_DeskLink_Setup_5.0.4.exe">HA_DeskLink_Setup_5.0.4.exe</a></td><td>Installer</td></tr>
+      <tr><td>🐧 Linux x64</td><td><a class="btn" href="https://github.com/TechFlipsi/ha-desklink-linux/releases/download/v5.0.4/ha-desklink-linux-x64.tar.gz">ha-desklink-linux-x64.tar.gz</a></td><td>tar.gz</td></tr>
+      <tr><td>🐧 Linux ARM64</td><td><a class="btn" href="https://github.com/TechFlipsi/ha-desklink-linux/releases/download/v5.0.4/ha-desklink-linux-arm64.tar.gz">ha-desklink-linux-arm64.tar.gz</a></td></tr>
+      <tr><td>🍎 macOS ARM64 (Apple Silicon)</td><td><a class="btn" href="https://github.com/TechFlipsi/ha-desklink-mac/releases/download/v4.4.2/HA_DeskLink_macOS_ARM64_4.4.2.zip">HA_DeskLink_macOS_ARM64_4.4.2.zip</a></td></tr>
+      <tr><td>🍎 macOS Intel</td><td><a class="btn" href="https://github.com/TechFlipsi/ha-desklink-mac/releases/download/v4.4.2/HA_DeskLink_macOS_x64_4.4.2.zip">HA_DeskLink_macOS_x64_4.4.2.zip</a></td></tr>
+    </table>
+    <p style="color:var(--muted);font-size:.9rem">All releases: <a href="https://github.com/TechFlipsi/ha-desklink-windows/releases">Windows</a> · <a href="https://github.com/TechFlipsi/ha-desklink-linux/releases">Linux</a> · <a href="https://github.com/TechFlipsi/ha-desklink-mac/releases">macOS</a></p>
+  </section>
+
+  <section>
+    <h2>How it compares</h2>
+    <p>Looking for ways to get <strong>Home Assistant on your PC</strong>? Common options and where HA DeskLink fits:</p>
+    <ul class="feats">
+      <li><strong>Browser tab / PWA</strong> — full dashboard, but just a browser window</li>
+      <li><strong>HASS.Agent</strong> — powerful Windows integration with sensors &amp; commands</li>
+      <li><strong>HA DeskLink</strong> — lightweight companion: live desktop view, notifications, system sensors, WebView dashboard — for Windows, Linux <em>and</em> macOS</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Source &amp; Community</h2>
+    <p>Source code per platform: <a href="https://github.com/TechFlipsi/ha-desklink-windows">Windows</a> · <a href="https://github.com/TechFlipsi/ha-desklink-linux">Linux</a> · <a href="https://github.com/TechFlipsi/ha-desklink-mac">macOS</a> · Questions &amp; feedback: <a href="https://discord.gg/zHPhQ7EaqH">Discord</a></p>
+  </section>
+</div>
+
+<footer>
+  <p>HA DeskLink is part of the <a href="https://github.com/TechFlipsi">TechFlipsi ecosystem</a> — FlipsiColor (AI photo &amp; video color correction), FlipsiForge (3D printer management), HA DeskLink (Home Assistant desktop companion).<br>
+  Home Assistant is a registered trademark of the Home Assistant project. HA DeskLink is an independent community project.</p>
+</footer>
+</body>
+</html>
